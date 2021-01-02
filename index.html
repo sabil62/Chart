@@ -30,7 +30,11 @@
     <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-database.js"></script>
   </head>
-  <body data-spy="scroll" data-target="#navbar-chart">
+  <body
+    data-spy="scroll"
+    data-target="#navbar-chart"
+    style="background-color: aliceblue"
+  >
     <nav
       id="navbar-chart"
       class="navbar navbar-expand-lg navbar-light bg-light fixed-top"
@@ -82,7 +86,27 @@
     <!-- -----------------------------------------Main box-------------------------------------------- -->
     <div class="col-md-12">
       <div class="row">
-        <div class="col-xl-4 col-md-6 col-sm-12 p-4"></div>
+        <div class="col-xl-4 col-md-6 col-sm-12 p-4">
+          <div class="box">
+            <div class="col-md-12">
+              <div class="row py-3">
+                <div class="col-6 box-heading">Dustbin Status</div>
+                <div class="col-3"></div>
+                <div class="col-3 pt-2 icon-right">
+                  <i class="fas fa-caret-down p-1"></i>
+                  <i class="fab fa-dashcube p-1"></i>
+                  <i class="fas fa-times p-1"></i>
+                </div>
+              </div>
+            </div>
+            <div class="line"></div>
+            <div class="dustbin">
+              <img src="./assets/images/dustbin.png" class="dustbin-closed" />
+              <!-- same img dustbin-opened and jquery .hide -->
+            </div>
+            <h3 class="text-center pt-3">CLOSED</h3>
+          </div>
+        </div>
         <div class="col-xl-4 col-md-6 col-sm-12 p-4"></div>
         <div class="col-xl-4 col-md-12 col-sm-12 p-4"></div>
       </div>
