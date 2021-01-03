@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Slideshow gallery in a marker tooltip</title>
+    <meta
+      name="viewport"
+      content="initial-scale=1,maximum-scale=1,user-scalable=no"
+    />
+    <script src="https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.js"></script>
+    <link
+      href="https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      #map {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+
+    <!-- jQuery is required for this example. -->
+    <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script>
+      L.mapbox.accessToken =
+        "pk.eyJ1Ijoic2FiaWw2MiIsImEiOiJjazk0ZmZwODgwNnVyM29ueHAzeGQ3ZTRnIn0.z8Fqzc6NLuBZQRD3PKv03A";
+      var map = L.mapbox
+        .map("map")
+        .addLayer(L.mapbox.styleLayer("mapbox://styles/mapbox/streets-v11"));
+
+      var myLayer = L.mapbox.featureLayer().addTo(map);
+
+      var geoJson = {
+        type: "FeatureCollection",
+        features: [
+          {
+            type: "Feature",
+            geometry: { type: "Point", coordinates: [-77.03, 38.9] },
+            properties: {
+              title: "Washington, D.C.",
+              "marker-color": "#3c4e5a",
+              "marker-symbol": "monument",
+              "marker-size": "large",
+            },
+          },
+          {
+            type: "Feature",
+            geometry: { type: "Point", coordinates: [-74.0, 40.71] },
+            properties: {
+              title: "New York City",
+              "marker-color": "#500000",
+              "marker-symbol": "rocket",
+              "marker-size": "large",
+            },
+          },
+        ],
+      };
+
+      // Add features to the map
+      myLayer.setGeoJSON(geoJson);
+
+      map.setView([40, -75], 6);
+    </script>
+  </body>
+</html>

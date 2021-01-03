@@ -5,6 +5,12 @@
     <title>Chart</title>
 
     <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase.js"></script>
+    <!-- mapbox -->
+    <script src="https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.js"></script>
+    <link
+      href="https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.css"
+      rel="stylesheet"
+    />
 
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"
@@ -230,10 +236,10 @@
 
     <!-- -----------------------------------------END-------------------------------------------- -->
 
-    <div class="box">
+    <div class="box" style="height: 650px; margin: 2rem">
       <div class="col-md-12">
         <div class="row py-2">
-          <div class="col-6 box-heading">Dustbin Status</div>
+          <div class="col-6 box-heading">Alert Map</div>
           <div class="col-3"></div>
           <div class="col-3 pt-2 icon-right">
             <i class="fas fa-caret-down p-1"></i>
@@ -243,11 +249,114 @@
         </div>
       </div>
       <div class="line"></div>
+      <div style="height: 12px"></div>
+      <div id="map"></div>
     </div>
 
-    <!-- -----------------------------------------END-------------------------------------------- -->
+    <style>
+      #map {
+        position: relative;
 
-    <canvas id="myChart" width="200" height="200"></canvas>
+        width: 100%;
+        height: 550px;
+        padding: 0 1rem;
+      }
+    </style>
+
+    <!-- -----------------------------------------END-------------------------------------------- -->
+    <!-- pk.eyJ1Ijoic2FiaWw2MiIsImEiOiJjazk0ZmZwODgwNnVyM29ueHAzeGQ3ZTRnIn0.z8Fqzc6NLuBZQRD3PKv03A -->
+
+    <script>
+      L.mapbox.accessToken =
+        "pk.eyJ1Ijoic2FiaWw2MiIsImEiOiJjazk0Zm5vb3EwOTNlM2RwZ2IzMjE2aTdzIn0.5evZOnH08YkdGoQwppLoHA";
+      var map = L.mapbox
+        .map("map")
+        .addLayer(L.mapbox.styleLayer("mapbox://styles/mapbox/streets-v11"));
+
+      var myLayer = L.mapbox.featureLayer().addTo(map);
+
+      var geoJson = {
+        type: "FeatureCollection",
+        features: [
+          {
+            type: "Feature",
+            geometry: { type: "Point", coordinates: [85.536698, 27.61627] },
+            properties: {
+              title: "Dustbin 1",
+              "marker-color": "#3c4e5a",
+              "marker-symbol": "circle",
+              "marker-size": "large",
+            },
+          },
+          {
+            type: "Feature",
+            geometry: { type: "Point", coordinates: [85.536398, 27.61827] },
+            properties: {
+              title: "Dustbin 2",
+              "marker-color": "#900216",
+              "marker-symbol": "rocket",
+              "marker-size": "large",
+            },
+          },
+          {
+            type: "Feature",
+            geometry: { type: "Point", coordinates: [85.536498, 27.62027] },
+            properties: {
+              title: "Dustbin 3",
+              "marker-color": "#3c4e5a",
+              "marker-symbol": "circle",
+              "marker-size": "large",
+            },
+          },
+          {
+            type: "Feature",
+            geometry: { type: "Point", coordinates: [85.538998, 27.61827] },
+            properties: {
+              title: "Dustbin 4",
+              "marker-color": "#3c4e5a",
+              "marker-symbol": "circle",
+              "marker-size": "large",
+            },
+          },
+          {
+            type: "Feature",
+            geometry: { type: "Point", coordinates: [85.538998, 27.62027] },
+            properties: {
+              title: "Dustbin 5",
+              "marker-color": "#900216",
+              "marker-symbol": "rocket",
+              "marker-size": "large",
+            },
+          },
+          {
+            type: "Feature",
+            geometry: { type: "Point", coordinates: [85.534998, 27.61697] },
+            properties: {
+              title: "Dustbin 6",
+              "marker-color": "#3c4e5a",
+              "marker-symbol": "circle",
+              "marker-size": "large",
+            },
+          },
+          {
+            type: "Feature",
+            geometry: { type: "Point", coordinates: [85.535701, 27.61905] },
+            properties: {
+              title: "Dustbin 7",
+              "marker-color": "#3c4e5a",
+              "marker-symbol": "circle",
+              "marker-size": "large",
+            },
+          },
+        ],
+      };
+
+      // Add features to the map
+      myLayer.setGeoJSON(geoJson);
+
+      map.setView([27.61827, 85.536398], 17);
+    </script>
+    <!-- <canvas id="myChart" width="200" height="200"></canvas> -->
     <!-- <script>
       var ctx = document.getElementById("myChart").getContext("2d");
       var myChart = new Chart(ctx, {
