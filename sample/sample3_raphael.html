@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.1/Chart.js"></script>
+
+    <title>ESPr-BME280</title>
+  </head>
+  <body>
+    <canvas id="canvas_press" height="100"></canvas>
+    <canvas id="canvas_temp" height="100"></canvas>
+    <canvas id="canvas_hum" height="100"></canvas>
+    <canvas id="canvas_light" height="100"></canvas>
+
+    <script type="text/javascript">
+      var canvas_press = document
+        .getElementById("canvas_press")
+        .getContext("2d");
+      var canvas_temp = document.getElementById("canvas_temp").getContext("2d");
+      var canvas_hum = document.getElementById("canvas_hum").getContext("2d");
+      var canvas_light = document
+        .getElementById("canvas_light")
+        .getContext("2d");
+
+      var data_press = {
+        labels: [],
+        datasets: [
+          {
+            label: "Pressure (hPa)",
+            backgroundColor: "rgba(50, 50, 100, 0.2)",
+            borderColor: "rgba(50, 50, 100, 1)",
+            borderWidth: 1,
+            pointRadius: 0,
+            data: [],
+          },
+        ],
+      };
+
+      var data_temp = {
+        labels: [],
+        datasets: [
+          {
+            label: "Temperature (c)",
+            backgroundColor: "rgba(100, 50, 50, 0.2)",
+            borderColor: "rgba(100, 50, 50, 1)",
+            borderWidth: 1,
+            pointRadius: 0,
+            data: [100],
+          },
+        ],
+      };
+
+      var data_hum = {
+        labels: [],
+        datasets: [
+          {
+            label: "Humidity (%)",
+            backgroundColor: "rgba(50, 100, 50, 0.2)",
+            borderColor: "rgba(50, 100, 50, 1)",
+            borderWidth: 1,
+            pointRadius: 0,
+            data: [60],
+          },
+        ],
+      };
+
+      var data_light = {
+        labels: [],
+        datasets: [
+          {
+            label: "Light",
+            backgroundColor: "rgba(50, 50, 50, 0.2)",
+            borderColor: "rgba(50, 50, 50, 1)",
+            borderWidth: 1,
+            pointRadius: 0,
+            data: [10],
+          },
+        ],
+      };
+
+      new Chart.Line(canvas_press, { data: data_press });
+      new Chart.Line(canvas_temp, { data: data_temp });
+      new Chart.Line(canvas_hum, { data: data_hum });
+      new Chart.Line(canvas_light, { data: data_light });
+
+      his.run();
+    </script>
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

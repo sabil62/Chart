@@ -1,0 +1,20 @@
+.box {
+  background-color: white;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.096);
+  border-radius: 5px;
+  height: 450px;
+  .line {
+    height: 3px;
+    background-color: #d4dde6;
+    margin: 0 0.8rem;
+    border-radius: 1rem;
+  }
+  &-heading {
+    font-weight: bold;
+    color: #aecdd4;
+    font-size: 1.6rem;
+  }
+  .icon-right {
+    color: rgb(220, 220, 220);
+  }
+}
