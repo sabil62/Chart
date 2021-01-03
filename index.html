@@ -268,6 +268,39 @@
     <!-- pk.eyJ1Ijoic2FiaWw2MiIsImEiOiJjazk0ZmZwODgwNnVyM29ueHAzeGQ3ZTRnIn0.z8Fqzc6NLuBZQRD3PKv03A -->
 
     <script>
+      firebase.initializeApp(config);
+      var config = {
+        apiKey: "AIzaSyDcrIG94rKhuN3SkIrJk7ZSZltHLMdTdbo",
+        authDomain: "flutter-56d87.firebaseapp.com",
+        databaseURL: "https://flutter-56d87.firebaseio.com",
+        projectId: "flutter-56d87",
+        storageBucket: "flutter-56d87.appspot.com",
+        messagingSenderId: "682927014831",
+      };
+
+      function addData(chart, label, data) {
+        chart.data.labels.push(label);
+        chart.data.datasets.forEach((dataset) => {
+          dataset.data.push(data);
+        });
+        chart.update();
+      }
+
+      function removeData(chart) {
+        chart.data.labels.pop();
+        chart.data.datasets.forEach((dataset) => {
+          dataset.data.pop();
+        });
+        chart.update();
+      }
+      var valueRef = firebase.database().ref("arduinoValue");
+      valueRef.on("value", function (snapshot) {
+        removeData(myChart);
+        addData(myChart, "1", snapshot.val());
+      });
+    </script>
+
+    <script>
       L.mapbox.accessToken =
         "pk.eyJ1Ijoic2FiaWw2MiIsImEiOiJjazk0ZmZwODgwNnVyM29ueHAzeGQ3ZTRnIn0.z8Fqzc6NLuBZQRD3PKv03A ";
       var map = L.mapbox
@@ -357,71 +390,7 @@
 
       map.setView([27.61827, 85.536398], 17);
     </script>
-    <!-- <canvas id="myChart" width="200" height="200"></canvas> -->
-    <!-- <script>
-      var ctx = document.getElementById("myChart").getContext("2d");
-      var myChart = new Chart(ctx, {
-        type: "bar",
-        data: {
-          labels: ["Value"],
-          datasets: [
-            {
-              label: "# of Whatever",
-              data: [0],
-              backgroundColor: ["rgba(255, 99, 132, 0.2)"],
-              borderColor: ["rgba(255, 99, 132, 1)"],
-              borderWidth: 1,
-            },
-          ],
-        },
-        options: {
-          scales: {
-            yAxes: [
-              {
-                ticks: {
-                  beginAtZero: true,
-                },
-              },
-            ],
-          },
-        },
-      });
 
-      function addData(chart, label, data) {
-        chart.data.labels.push(label);
-        chart.data.datasets.forEach((dataset) => {
-          dataset.data.push(data);
-        });
-        chart.update();
-      }
-
-      function removeData(chart) {
-        chart.data.labels.pop();
-        chart.data.datasets.forEach((dataset) => {
-          dataset.data.pop();
-        });
-        chart.update();
-      }
-
-      //Firebase code
-      //Config values to ba adapted!
-      var config = {
-        apiKey: "xxxxx",
-        authDomain: "xxxxx",
-        databaseURL: "xxxxx",
-        projectId: "xxxxx",
-        storageBucket: "xxxxx",
-        messagingSenderId: "xxxxx",
-      };
-
-      firebase.initializeApp(config);
-
-      var valueRef = firebase.database().ref("arduinoValue");
-      valueRef.on("value", function (snapshot) {
-        removeData(myChart);
-        addData(myChart, "1", snapshot.val());
-      });
-    </script> -->
     <script
       src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
       integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
