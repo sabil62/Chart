@@ -27,6 +27,11 @@
       integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
       crossorigin="anonymous"
     />
+    <!-- font google -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@900&display=swap"
+      rel="stylesheet"
+    />
 
     <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-database.js"></script>
@@ -101,6 +106,21 @@
               </div>
             </div>
             <div class="line"></div>
+            <div class="container">
+              <div class="row">
+                <div class="col-7">
+                  <img src="./assets/images/tree.png" style="height: 200px" />
+                </div>
+                <div class="col-5">
+                  <div
+                    class="box-heading"
+                    style="margin-top: 70%; font-size: 2.5rem"
+                  >
+                    DRY
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <div class="col-xl-4 col-md-6 col-sm-12 px-4">
@@ -117,6 +137,10 @@
               </div>
             </div>
             <div class="line"></div>
+            <canvas
+              id="temperature"
+              style="padding: 0 2rem 2.4rem 2rem"
+            ></canvas>
           </div>
         </div>
         <div class="col-xl-4 col-md-12 col-sm-12 px-4">
@@ -133,6 +157,7 @@
               </div>
             </div>
             <div class="line"></div>
+            <div id="clock"></div>
           </div>
         </div>
       </div>
